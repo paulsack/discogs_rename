@@ -3,7 +3,6 @@
 use Getopt::Std;
 use WWW::Discogs;
 use MP3::Tag;
-use Data::Dumper;
 
 getopts('n:');
 
@@ -26,6 +25,7 @@ for my $track ($release->tracklist) {
   $id3v2->artist($artist);
   $id3v2->album($release->title);
   $id3v2->year($release->year);
-  $id3v2->track($tracknum++);
+  $id3v2->track($tracknum);
   $id3v2->write_tag();
+  $tracknum++;
 }
